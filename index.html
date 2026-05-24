@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Index</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;overflow:hidden;font-family:sans-serif;font-size:18px;}
+#container{display:flex;height:100vh;}
+#sidebar{width:260px;min-width:140px;border-right:1px solid #d0d0d0;overflow-y:auto;background:#f5f5f5;display:flex;flex-direction:column;transition:width 0.2s;}
+#sidebar.collapsed{width:0;min-width:0;border-right:none;overflow:hidden;}
+#sidebar-header{padding:10px 14px;border-bottom:1px solid #d0d0d0;background:#ececec;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;}
+#sidebar-header h1{font-size:1.05em;color:#333;font-weight:bold;white-space:nowrap;overflow:hidden;}
+#hide-btn{background:none;border:none;cursor:pointer;font-size:1em;color:#666;padding:0 2px;flex-shrink:0;line-height:1;}
+#hide-btn:hover{color:#000;}
+#show-btn{display:none;position:fixed;top:8px;left:8px;z-index:10;background:#ececec;border:1px solid #d0d0d0;border-radius:4px;cursor:pointer;font-size:1em;padding:4px 7px;color:#444;line-height:1;}
+#show-btn:hover{background:#e0e0e0;}
+#tree{padding:6px 0;flex:1;}
+ul{list-style:none;padding-left:0;}
+ul ul{padding-left:14px;}
+.folder-row{display:flex;align-items:center;padding:5px 10px;cursor:pointer;user-select:none;gap:6px;}
+.folder-row:hover{background:#e0e0e0;}
+.toggle{font-size:0.7em;color:#888;width:10px;flex-shrink:0;}
+.folder-icon{flex-shrink:0;}
+.folder-label{font-weight:bold;font-size:0.92em;color:#222;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.badge{font-weight:normal;font-size:0.68em;background:#d8d8d8;border-radius:8px;padding:1px 5px;color:#666;flex-shrink:0;}
+.file-row{display:flex;align-items:center;padding:4px 10px 4px 20px;cursor:pointer;gap:5px;}
+.file-row:hover{background:#ddeeff;}
+.file-row.active{background:#0366d6;}
+.file-icon{flex-shrink:0;font-size:0.88em;}
+.file-name{font-size:0.9em;color:#0366d6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.file-row.active .file-name{color:#fff;}
+#content{flex:1;display:flex;flex-direction:column;min-width:0;}
+#welcome{flex:1;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:1em;}
+#content-frame{flex:1;border:none;width:100%;display:none;}
+</style>
+</head>
+<body>
+<div id="container">
+  <button id="show-btn" onclick="showSidebar()" title="Show panel">▶</button>
+  <div id="sidebar">
+    <div id="sidebar-header">
+      <h1>📁 Index</h1>
+      <button id="hide-btn" onclick="hideSidebar()" title="Hide panel">◄</button>
+    </div>
+    <div id="tree"><ul>
+<li><div class="file-row" onclick="openFile('energy.html', this)"><span class="file-icon">📄</span><span class="file-name">energy</span></div></li>
+<li><div class="file-row" onclick="openFile('energy_02.html', this)"><span class="file-icon">📄</span><span class="file-name">energy_02</span></div></li>
+<li><div class="file-row" onclick="openFile('energymore.html', this)"><span class="file-icon">📄</span><span class="file-name">energymore</span></div></li>
+<li><div class="file-row" onclick="openFile('semiconductor.html', this)"><span class="file-icon">📄</span><span class="file-name">semiconductor</span></div></li>
+<li><div class="file-row" onclick="openFile('spacex.html', this)"><span class="file-icon">📄</span><span class="file-name">spacex</span></div></li>
+<li><div class="file-row" onclick="openFile('spacex2.html', this)"><span class="file-icon">📄</span><span class="file-name">spacex2</span></div></li>
+</ul>
+</div>
+  </div>
+  <div id="content">
+    <div id="welcome">Select a file to view its contents.</div>
+    <iframe id="content-frame" src=""></iframe>
+  </div>
+</div>
+<script>
+function openFile(href, row) {
+  document.querySelectorAll('.file-row').forEach(r => r.classList.remove('active'));
+  row.classList.add('active');
+  var frame = document.getElementById('content-frame');
+  var welcome = document.getElementById('welcome');
+  frame.src = href;
+  frame.style.display = 'block';
+  welcome.style.display = 'none';
+}
+function hideSidebar() {
+  document.getElementById('sidebar').classList.add('collapsed');
+  document.getElementById('show-btn').style.display = 'block';
+}
+function showSidebar() {
+  document.getElementById('sidebar').classList.remove('collapsed');
+  document.getElementById('show-btn').style.display = 'none';
+}
+function toggleFolder(row) {
+  var children = row.parentElement.querySelector('.folder-children');
+  if (!children) return;
+  var open = children.style.display !== 'none';
+  children.style.display = open ? 'none' : '';
+  row.querySelector('.toggle').textContent = open ? '\u25B6' : '\u25BC';
+}
+</script>
+</body>
+</html>
