@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>python</title>
+<style>*{box-sizing:border-box;}body{font-family:sans-serif;margin:0;padding:24px;line-height:1.8;font-size:18px;text-align:left;word-wrap:break-word;}h1{font-size:2.2em;}h2{font-size:1.9em;}h3{font-size:1.6em;}h4{font-size:1.4em;}h5{font-size:1.2em;}h6{font-size:1.1em;}p{margin:0.6em 0;}pre{background:#f4f4f4;padding:14px;border-radius:4px;overflow-x:auto;font-size:16px;white-space:pre-wrap;word-break:break-all;}code{background:#f4f4f4;padding:2px 6px;border-radius:3px;font-size:16px;word-break:break-all;}img{max-width:100%;height:auto;display:block;}table{border-collapse:collapse;overflow-x:auto;display:block;margin:0.8em 0;}th,td{border:1px solid #ccc;padding:6px 12px;text-align:left;}th{background:#f0f0f0;font-weight:bold;}tr:nth-child(even) td{background:#fafafa;}hr{border:none;border-top:1px solid #ccc;}blockquote{border-left:4px solid #ccc;margin:0;padding-left:16px;color:#555;}ul,ol{padding-left:28px;}a{color:#0366d6;}@media(max-width:600px){body{font-size:15px;padding:16px;}h1{font-size:1.7em;}h2{font-size:1.5em;}h3{font-size:1.3em;}pre,code{font-size:13px;}}</style>
+</head>
+<body>
+<h1>Python Fundamentals Study Notes</h1>
+<h2>1. Introduction to Python</h2>
+<h3>What is Python?</h3>
+<p>Python is a high-level, interpreted, general-purpose programming language known for:</p>
+<ul>
+<li>Simple and readable syntax</li>
+<li>Large standard library</li>
+<li>Cross-platform compatibility</li>
+<li>Strong community support</li>
+<li>Use in automation, web development, data science, AI, DevOps, and cybersecurity</li>
+</ul>
+<h3>Features of Python</h3>
+<ul>
+<li>Easy to learn</li>
+<li>Dynamically typed</li>
+<li>Object-oriented</li>
+<li>Open source</li>
+<li>Interpreted language</li>
+<li>Extensive libraries and frameworks</li>
+</ul>
+<h3>Common Uses</h3>
+<ul>
+<li>Automation and scripting</li>
+<li>Web development</li>
+<li>Cloud and DevOps</li>
+<li>Data analysis</li>
+<li>Machine learning</li>
+<li>API development</li>
+<li>System administration</li>
+</ul>
+<hr>
+<h1>2. Installing and Running Python</h1>
+<h2>Checking Python Version</h2>
+<pre><code>python --version
+</code></pre>
+<p>or</p>
+<pre><code>python3 --version
+</code></pre>
+<h2>Running Python</h2>
+<h3>Interactive Mode</h3>
+<pre><code>python
+</code></pre>
+<h3>Running a Script</h3>
+<pre><code>python hello.py
+</code></pre>
+<h2>First Python Program</h2>
+<pre><code>print("Hello, World!")
+</code></pre>
+<hr>
+<h1>3. Python Syntax Basics</h1>
+<h2>Indentation</h2>
+<p>Python uses indentation instead of braces.</p>
+<pre><code>if True:
+    print("Indented block")
+</code></pre>
+<h2>Comments</h2>
+<h3>Single-line Comment</h3>
+<pre><code># This is a comment
+</code></pre>
+<h3>Multi-line Comment</h3>
+<pre><code>"""
+This is a
+multi-line comment
+"""
+</code></pre>
+<h2>Variables</h2>
+<pre><code>name = "Arun"
+age = 30
+salary = 55000.50
+</code></pre>
+<h3>Rules for Variable Names</h3>
+<ul>
+<li>Must start with a letter or underscore</li>
+<li>Cannot start with a number</li>
+<li>Case-sensitive</li>
+<li>Cannot use Python keywords</li>
+</ul>
+<hr>
+<h1>4. Data Types</h1>
+<h2>Numeric Types</h2>
+<h3>Integer</h3>
+<pre><code>x = 10
+</code></pre>
+<h3>Float</h3>
+<pre><code>y = 3.14
+</code></pre>
+<h3>Complex</h3>
+<pre><code>z = 2 + 3j
+</code></pre>
+<h2>String</h2>
+<pre><code>name = "Python"
+</code></pre>
+<h2>Boolean</h2>
+<pre><code>is_valid = True
+</code></pre>
+<h2>List</h2>
+<pre><code>numbers = [1, 2, 3]
+</code></pre>
+<h2>Tuple</h2>
+<pre><code>point = (10, 20)
+</code></pre>
+<h2>Set</h2>
+<pre><code>unique = {1, 2, 3}
+</code></pre>
+<h2>Dictionary</h2>
+<pre><code>student = {
+    "name": "John",
+    "age": 22
+}
+</code></pre>
+<h2>Checking Data Type</h2>
+<pre><code>print(type(x))
+</code></pre>
+<hr>
+<h1>5. Input and Output</h1>
+<h2>Taking Input</h2>
+<pre><code>name = input("Enter your name: ")
+</code></pre>
+<h2>Integer Input</h2>
+<pre><code>age = int(input("Enter age: "))
+</code></pre>
+<h2>Output</h2>
+<pre><code>print("Welcome", name)
+</code></pre>
+<h2>Formatted Strings</h2>
+<pre><code>name = "Alice"
+age = 25
+
+print(f"{name} is {age} years old")
+</code></pre>
+<hr>
+<h1>6. Operators</h1>
+<h2>Arithmetic Operators</h2>
+<table>
+<thead>
+<tr><th>Operator</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td>+</td><td>Addition</td></tr>
+<tr><td>-</td><td>Subtraction</td></tr>
+<tr><td>*</td><td>Multiplication</td></tr>
+<tr><td>/</td><td>Division</td></tr>
+<tr><td>//</td><td>Floor division</td></tr>
+<tr><td>%</td><td>Modulus</td></tr>
+<tr><td>**</td><td>Exponent</td></tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code>print(10 + 5)
+print(2 ** 3)
+</code></pre>
+<h2>Comparison Operators</h2>
+<table>
+<thead>
+<tr><th>Operator</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td>==</td><td>Equal</td></tr>
+<tr><td>!=</td><td>Not equal</td></tr>
+<tr><td>&gt;</td><td>Greater than</td></tr>
+<tr><td>&lt;</td><td>Less than</td></tr>
+<tr><td>&gt;=</td><td>Greater than or equal</td></tr>
+<tr><td>&lt;=</td><td>Less than or equal</td></tr>
+</tbody>
+</table>
+<h2>Logical Operators</h2>
+<table>
+<thead>
+<tr><th>Operator</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td>and</td><td>Logical AND</td></tr>
+<tr><td>or</td><td>Logical OR</td></tr>
+<tr><td>not</td><td>Logical NOT</td></tr>
+</tbody>
+</table>
+<h2>Assignment Operators</h2>
+<pre><code>x = 5
+x += 2
+x -= 1
+</code></pre>
+<hr>
+<h1>7. Conditional Statements</h1>
+<h2>if Statement</h2>
+<pre><code>age = 18
+
+if age &gt;= 18:
+    print("Adult")
+</code></pre>
+<h2>if-else Statement</h2>
+<pre><code>if age &gt;= 18:
+    print("Adult")
+else:
+    print("Minor")
+</code></pre>
+<h2>if-elif-else Statement</h2>
+<pre><code>marks = 75
+
+if marks &gt;= 90:
+    print("A")
+elif marks &gt;= 75:
+    print("B")
+else:
+    print("C")
+</code></pre>
+<hr>
+<h1>8. Loops</h1>
+<h2>for Loop</h2>
+<pre><code>for i in range(5):
+    print(i)
+</code></pre>
+<h2>while Loop</h2>
+<pre><code>count = 0
+
+while count &lt; 5:
+    print(count)
+    count += 1
+</code></pre>
+<h2>break Statement</h2>
+<pre><code>for i in range(10):
+    if i == 5:
+        break
+</code></pre>
+<h2>continue Statement</h2>
+<pre><code>for i in range(5):
+    if i == 2:
+        continue
+    print(i)
+</code></pre>
+<h2>pass Statement</h2>
+<pre><code>for i in range(5):
+    pass
+</code></pre>
+<hr>
+<h1>9. Strings</h1>
+<h2>Creating Strings</h2>
+<pre><code>text = "Python"
+</code></pre>
+<h2>String Indexing</h2>
+<pre><code>print(text[0])
+</code></pre>
+<h2>String Slicing</h2>
+<pre><code>print(text[0:3])
+</code></pre>
+<h2>Common String Methods</h2>
+<pre><code>text.upper()
+text.lower()
+text.strip()
+text.replace("P", "J")
+text.split()
+</code></pre>
+<h2>String Length</h2>
+<pre><code>len(text)
+</code></pre>
+<hr>
+<h1>10. Lists</h1>
+<h2>Creating Lists</h2>
+<pre><code>fruits = ["apple", "banana", "mango"]
+</code></pre>
+<h2>Accessing Elements</h2>
+<pre><code>print(fruits[0])
+</code></pre>
+<h2>Adding Elements</h2>
+<pre><code>fruits.append("orange")
+</code></pre>
+<h2>Removing Elements</h2>
+<pre><code>fruits.remove("banana")
+</code></pre>
+<h2>List Slicing</h2>
+<pre><code>print(fruits[0:2])
+</code></pre>
+<h2>Looping Through Lists</h2>
+<pre><code>for fruit in fruits:
+    print(fruit)
+</code></pre>
+<hr>
+<h1>11. Tuples</h1>
+<h2>Creating Tuples</h2>
+<pre><code>data = (1, 2, 3)
+</code></pre>
+<h2>Tuple Characteristics</h2>
+<ul>
+<li>Ordered</li>
+<li>Immutable</li>
+<li>Allows duplicate values</li>
+</ul>
+<h2>Accessing Tuple Elements</h2>
+<pre><code>print(data[1])
+</code></pre>
+<hr>
+<h1>12. Sets</h1>
+<h2>Creating Sets</h2>
+<pre><code>numbers = {1, 2, 3}
+</code></pre>
+<h2>Set Operations</h2>
+<pre><code>numbers.add(4)
+numbers.remove(2)
+</code></pre>
+<h2>Set Characteristics</h2>
+<ul>
+<li>Unordered</li>
+<li>No duplicates</li>
+<li>Mutable</li>
+</ul>
+<hr>
+<h1>13. Dictionaries</h1>
+<h2>Creating Dictionary</h2>
+<pre><code>student = {
+    "name": "John",
+    "age": 22
+}
+</code></pre>
+<h2>Accessing Values</h2>
+<pre><code>print(student["name"])
+</code></pre>
+<h2>Adding/Updating Values</h2>
+<pre><code>student["city"] = "Omaha"
+</code></pre>
+<h2>Looping Through Dictionary</h2>
+<pre><code>for key, value in student.items():
+    print(key, value)
+</code></pre>
+<hr>
+<h1>14. Functions</h1>
+<h2>Defining a Function</h2>
+<pre><code>def greet():
+    print("Hello")
+</code></pre>
+<h2>Calling a Function</h2>
+<pre><code>greet()
+</code></pre>
+<h2>Function with Parameters</h2>
+<pre><code>def add(a, b):
+    return a + b
+</code></pre>
+<h2>Function Call</h2>
+<pre><code>result = add(5, 3)
+print(result)
+</code></pre>
+<h2>Default Parameters</h2>
+<pre><code>def greet(name="Guest"):
+    print(name)
+</code></pre>
+<h2>Keyword Arguments</h2>
+<pre><code>greet(name="Alice")
+</code></pre>
+<hr>
+<h1>15. Scope of Variables</h1>
+<h2>Local Variable</h2>
+<pre><code>def test():
+    x = 10
+</code></pre>
+<h2>Global Variable</h2>
+<pre><code>x = 100
+
+def show():
+    print(x)
+</code></pre>
+<hr>
+<h1>16. Exception Handling</h1>
+<h2>Basic Try-Except</h2>
+<pre><code>try:
+    x = 10 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+</code></pre>
+<h2>Multiple Exceptions</h2>
+<pre><code>try:
+    num = int(input())
+except ValueError:
+    print("Invalid input")
+</code></pre>
+<h2>finally Block</h2>
+<pre><code>try:
+    print("Running")
+finally:
+    print("Done")
+</code></pre>
+<hr>
+<h1>17. File Handling</h1>
+<h2>Opening a File</h2>
+<pre><code>file = open("data.txt", "r")
+</code></pre>
+<h2>Reading File</h2>
+<pre><code>content = file.read()
+</code></pre>
+<h2>Writing File</h2>
+<pre><code>file = open("data.txt", "w")
+file.write("Hello")
+</code></pre>
+<h2>Closing File</h2>
+<pre><code>file.close()
+</code></pre>
+<h2>Recommended Method</h2>
+<pre><code>with open("data.txt", "r") as file:
+    print(file.read())
+</code></pre>
+<hr>
+<h1>18. Modules and Packages</h1>
+<h2>Importing Module</h2>
+<pre><code>import math
+</code></pre>
+<h2>Using Module Functions</h2>
+<pre><code>print(math.sqrt(16))
+</code></pre>
+<h2>Import Specific Function</h2>
+<pre><code>from math import sqrt
+</code></pre>
+<h2>Custom Module</h2>
+<h3>mymodule.py</h3>
+<pre><code>def hello():
+    print("Hello")
+</code></pre>
+<h3>main.py</h3>
+<pre><code>import mymodule
+mymodule.hello()
+</code></pre>
+<hr>
+<h1>19. Object-Oriented Programming Basics</h1>
+<h2>Creating a Class</h2>
+<pre><code>class Person:
+    pass
+</code></pre>
+<h2>Constructor</h2>
+<pre><code>class Person:
+    def __init__(self, name):
+        self.name = name
+</code></pre>
+<h2>Creating Object</h2>
+<pre><code>p1 = Person("John")
+</code></pre>
+<h2>Method</h2>
+<pre><code>class Person:
+    def greet(self):
+        print("Hello")
+</code></pre>
+<h2>Inheritance</h2>
+<pre><code>class Animal:
+    pass
+
+class Dog(Animal):
+    pass
+</code></pre>
+<hr>
+<h1>20. List Comprehension</h1>
+<h2>Basic Example</h2>
+<pre><code>squares = [x*x for x in range(5)]
+</code></pre>
+<h2>With Condition</h2>
+<pre><code>even = [x for x in range(10) if x % 2 == 0]
+</code></pre>
+<hr>
+<h1>21. Lambda Functions</h1>
+<h2>Syntax</h2>
+<pre><code>square = lambda x: x * x
+</code></pre>
+<h2>Example</h2>
+<pre><code>print(square(5))
+</code></pre>
+<hr>
+<h1>22. Useful Built-in Functions</h1>
+<table>
+<thead>
+<tr><th>Function</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td>len()</td><td>Returns length</td></tr>
+<tr><td>type()</td><td>Returns data type</td></tr>
+<tr><td>range()</td><td>Generates sequence</td></tr>
+<tr><td>input()</td><td>Takes user input</td></tr>
+<tr><td>print()</td><td>Displays output</td></tr>
+<tr><td>sum()</td><td>Adds elements</td></tr>
+<tr><td>max()</td><td>Largest value</td></tr>
+<tr><td>min()</td><td>Smallest value</td></tr>
+<tr><td>sorted()</td><td>Sorts data</td></tr>
+</tbody>
+</table>
+<hr>
+<h1>23. Virtual Environments</h1>
+<h2>Creating Virtual Environment</h2>
+<pre><code>python -m venv myenv
+</code></pre>
+<h2>Activating Environment</h2>
+<h3>Linux/macOS</h3>
+<pre><code>source myenv/bin/activate
+</code></pre>
+<h3>Windows</h3>
+<pre><code>myenv\Scripts\activate
+</code></pre>
+<h2>Deactivating</h2>
+<pre><code>deactivate
+</code></pre>
+<hr>
+<h1>24. pip Package Manager</h1>
+<h2>Install Package</h2>
+<pre><code>pip install requests
+</code></pre>
+<h2>Upgrade Package</h2>
+<pre><code>pip install --upgrade requests
+</code></pre>
+<h2>List Installed Packages</h2>
+<pre><code>pip list
+</code></pre>
+<hr>
+<h1>25. Important Python Keywords</h1>
+<pre><code>False    await     else      import    pass
+None     break     except    in        raise
+True     class     finally   is        return
+and      continue  for       lambda    try
+as       def       from      nonlocal  while
+assert   del       global    not       with
+async    elif      if        or        yield
+</code></pre>
+<hr>
+<h1>26. Best Practices</h1>
+<ul>
+<li>Use meaningful variable names</li>
+<li>Follow PEP 8 coding standards</li>
+<li>Write comments where necessary</li>
+<li>Keep functions small and reusable</li>
+<li>Use virtual environments</li>
+<li>Handle exceptions properly</li>
+<li>Avoid hardcoding values</li>
+<li>Use version control like Git</li>
+</ul>
+<hr>
+<h1>27. Common Interview Questions</h1>
+<h2>What is the difference between list and tuple?</h2>
+<ul>
+<li>List is mutable</li>
+<li>Tuple is immutable</li>
+</ul>
+<h2>What is Python's GIL?</h2>
+<p>Global Interpreter Lock allows only one thread to execute Python bytecode at a time.</p>
+<h2>Difference between == and is</h2>
+<ul>
+<li>== compares values</li>
+<li>is compares memory locations</li>
+</ul>
+<h2>What is a dictionary?</h2>
+<p>A key-value pair data structure.</p>
+<h2>What are Python decorators?</h2>
+<p>Functions that modify behavior of another function.</p>
+<hr>
+<h1>28. Quick Revision Sheet</h1>
+<h2>Data Structures</h2>
+<table>
+<thead>
+<tr><th>Type</th><th>Mutable</th><th>Ordered</th></tr>
+</thead>
+<tbody>
+<tr><td>List</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Tuple</td><td>No</td><td>Yes</td></tr>
+<tr><td>Set</td><td>Yes</td><td>No</td></tr>
+<tr><td>Dictionary</td><td>Yes</td><td>Yes</td></tr>
+</tbody>
+</table>
+<h2>Loop Keywords</h2>
+<table>
+<thead>
+<tr><th>Keyword</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td>break</td><td>Exit loop</td></tr>
+<tr><td>continue</td><td>Skip iteration</td></tr>
+<tr><td>pass</td><td>Placeholder</td></tr>
+</tbody>
+</table>
+<h2>Function Keywords</h2>
+<table>
+<thead>
+<tr><th>Keyword</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td>def</td><td>Define function</td></tr>
+<tr><td>return</td><td>Return value</td></tr>
+<tr><td>lambda</td><td>Anonymous function</td></tr>
+</tbody>
+</table>
+<hr>
+<h1>29. Mini Practice Exercises</h1>
+<h2>Exercise 1: Even or Odd</h2>
+<pre><code>num = int(input("Enter number: "))
+
+if num % 2 == 0:
+    print("Even")
+else:
+    print("Odd")
+</code></pre>
+<h2>Exercise 2: Sum of Numbers</h2>
+<pre><code>total = 0
+
+for i in range(1, 6):
+    total += i
+
+print(total)
+</code></pre>
+<h2>Exercise 3: Reverse String</h2>
+<pre><code>text = "python"
+print(text[::-1])
+</code></pre>
+<h2>Exercise 4: Find Largest Number</h2>
+<pre><code>numbers = [5, 2, 9, 1]
+print(max(numbers))
+</code></pre>
+<hr>
+<h1>30. Recommended Next Topics</h1>
+<p>After mastering Python fundamentals, continue with:</p>
+<ul>
+<li>Advanced Python</li>
+<li>Object-Oriented Programming in depth</li>
+<li>Multithreading and multiprocessing</li>
+<li>REST APIs with Flask/FastAPI</li>
+<li>Automation with Python</li>
+<li>Data structures and algorithms</li>
+<li>DevOps automation using Python</li>
+<li>Database programming</li>
+<li>Testing with pytest</li>
+<li>Python for cloud and infrastructure automation</li>
+</ul>
+<hr>
+<h1>End of Notes</h1>
+</body>
+</html>
