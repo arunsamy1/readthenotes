@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ubuntu</title>
+<style>*{box-sizing:border-box;}body{font-family:sans-serif;margin:0;padding:24px;line-height:1.8;font-size:18px;text-align:left;word-wrap:break-word;}h1{font-size:2.2em;}h2{font-size:1.9em;}h3{font-size:1.6em;}h4{font-size:1.4em;}h5{font-size:1.2em;}h6{font-size:1.1em;}p{margin:0.6em 0;}pre{background:#f4f4f4;padding:14px;border-radius:4px;overflow-x:auto;font-size:16px;white-space:pre-wrap;word-break:break-all;}code{background:#f4f4f4;padding:2px 6px;border-radius:3px;font-size:16px;word-break:break-all;}img{max-width:100%;height:auto;display:block;}table{border-collapse:collapse;overflow-x:auto;display:block;margin:0.8em 0;}th,td{border:1px solid #ccc;padding:6px 12px;text-align:left;}th{background:#f0f0f0;font-weight:bold;}tr:nth-child(even) td{background:#fafafa;}hr{border:none;border-top:1px solid #ccc;}blockquote{border-left:4px solid #ccc;margin:0;padding-left:16px;color:#555;}ul,ol{padding-left:28px;}a{color:#0366d6;}@media(max-width:600px){body{font-size:15px;padding:16px;}h1{font-size:1.7em;}h2{font-size:1.5em;}h3{font-size:1.3em;}pre,code{font-size:13px;}}</style>
+</head>
+<body>
+<p>Here’s a step-by-step guide to clean your boot partition and remove Windows entirely from a Windows + Ubuntu dual-boot system.</p>
+<h2>⚠️ Before you start</h2>
+<ul>
+<li><strong>Back up your data</strong> – This process deletes Windows completely.</li>
+<li>Have a <strong>live Ubuntu USB</strong> handy (in case you need to repair GRUB).</li>
+</ul>
+<hr>
+<h2>Step 1: Backup Windows data (optional)</h2>
+<p>Boot into Windows and copy any files you want to keep to an external drive or Ubuntu partition.</p>
+<hr>
+<h2>Step 2: Boot into Ubuntu</h2>
+<p>Make sure you boot into your Ubuntu installation, not the live USB.</p>
+<hr>
+<h2>Step 3: Remove Windows from the boot menu</h2>
+<p>Open a terminal and run:</p>
+<pre><code>sudo update-grub
+</code></pre>
+<p>This regenerates the GRUB menu. Ubuntu will still list Windows until Windows is actually removed from the disk, but this ensures GRUB is refreshed later.</p>
+<hr>
+<h2>Step 4: Delete the Windows partition(s)</h2>
+<ol>
+<li>Open <strong>GParted</strong> (install if missing: <code>sudo apt install gparted</code>).</li>
+<li>Identify your Windows partitions:</li>
+</ol>
+<p>   - Usually labeled <code>NTFS</code> or <code>fat32</code> (system reserved)</p>
+<p>   - The main Windows partition is large (C: drive)</p>
+<ol>
+<li><strong>Right-click</strong> each Windows partition → <strong>Delete</strong>.</li>
+<li>Apply changes (<code>Edit</code> → <code>Apply All Operations</code>).</li>
+</ol>
+<blockquote>💡 If Ubuntu is using the same EFI partition as Windows, don't delete the EFI partition – only delete the NTFS/FAT32 partitions that belong to Windows.</blockquote>
+<hr>
+<h2>Step 5: Reclaim space (optional)</h2>
+<p>After deleting Windows partitions, you can:</p>
+<ul>
+<li>Create a new partition for data</li>
+<li>Extend your Ubuntu partition into the free space (in GParted → resize/move)</li>
+</ul>
+<hr>
+<h2>Step 6: Clean up boot entries (UEFI systems)</h2>
+<p>If you are on a <strong>UEFI</strong> system (most modern PCs):</p>
+<pre><code># List EFI boot entries
+sudo efibootmgr -v
+</code></pre>
+<p>Find the Windows Boot Manager entry and delete it:</p>
+<pre><code>sudo efibootmgr -b XXXX -B
+</code></pre>
+<p>(Replace <code>XXXX</code> with the boot number for Windows)</p>
+<p>Then remove the Windows bootloader files:</p>
+<pre><code>sudo mount /dev/nvme0n1p1 /mnt   # Mount your EFI partition (check device name with lsblk)
+sudo rm -rf /mnt/EFI/Microsoft
+sudo umount /mnt
+</code></pre>
+<blockquote>The EFI partition is usually small (~100–500 MB) and formatted as FAT32. Do <strong>not</strong> delete the <code>EFI/ubuntu</code> folder.</blockquote>
+<hr>
+<h2>Step 7: Final GRUB update</h2>
+<pre><code>sudo update-grub
+</code></pre>
+<p>Now GRUB should show <strong>only Ubuntu</strong>.</p>
+<hr>
+<h2>Step 8: Verify</h2>
+<p>Reboot. The system should boot directly into Ubuntu with no Windows option in GRUB.</p>
+<hr>
+<h2>If something goes wrong</h2>
+<p>Boot from the <strong>Ubuntu live USB</strong>, then:</p>
+<pre><code>sudo mount /dev/sdXY /mnt          # Your Ubuntu root partition
+sudo mount /dev/sdXZ /mnt/boot/efi # Your EFI partition
+sudo grub-install --boot-directory=/mnt/boot /dev/sdX
+sudo update-grub
+</code></pre>
+<p>Replace <code>sdXY</code>, <code>sdXZ</code>, and <code>sdX</code> with your actual devices.</p>
+<hr>
+<h2>Summary (TL;DR)</h2>
+<ol>
+<li>Boot Ubuntu  </li>
+<li>Use GParted → delete Windows partitions  </li>
+<li>(UEFI) Use <code>efibootmgr</code> + remove <code>EFI/Microsoft</code>  </li>
+<li>Run <code>sudo update-grub</code>  </li>
+<li>Reboot – Ubuntu only ✅</li>
+</ol>
+</body>
+</html>
